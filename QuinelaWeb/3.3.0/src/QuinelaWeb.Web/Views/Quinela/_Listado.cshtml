@@ -1,0 +1,38 @@
+﻿@model IEnumerable<QuinelaWeb.Web.Models.Quinelas.QuinelaViewModel>
+
+@{
+    ViewBag.Title = "_Listado";
+}
+
+<div class="row clearfix">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Quinela
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+
+                    <td class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">menu</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li> @Html.ActionLink("Modificar", "Edit", new { id = item.Id })</li>
+                            <li> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</li>
+                        </ul>
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

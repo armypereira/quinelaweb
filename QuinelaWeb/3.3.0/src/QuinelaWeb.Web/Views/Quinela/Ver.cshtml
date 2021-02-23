@@ -1,0 +1,67 @@
+﻿@using Abp.Web.Mvc.Extensions
+@using System.Web.Optimization
+@model QuinelaWeb.Web.Models.Quinelas.QuinelaResultadoViewModel
+
+@{
+    ViewBag.Title = "";
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section styles {
+    <link href="~/lib/morris.js/morris.css" rel="stylesheet" />
+}
+
+
+
+    @if (Model.QuinelaDetalleJugadas != null) {
+        for (var i = 0; i < Model.QuinelaDetalleJugadas.Count(); i++) {
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4> @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].Grupo)</h4>
+                            <p> Partido: @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].Numero), Fecha:   @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].Fecha)</p>
+                        </div>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 align-center">
+                                    <img src="@Url.Content(Model.QuinelaDetalleJugadas[i].ImagePathLocal)" alt="Image" /><br />
+                                    @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].PaisLocal) <br />
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-md-offset-3 align-center">
+                                            @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].PaisLocalGol, new { @class = "form-control" }) <br />
+                                           <strong>  @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].PaisLocalGolResultado, new { @class = "form-control" })</strong><br />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 align-center">
+                                    <img src="@Url.Content(Model.QuinelaDetalleJugadas[i].ImagePathVisitante)" alt="Image" /><br />
+                                    @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].PaisVisitante)<br />
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-6 col-md-offset-3 align-center">
+                                            @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].PaisVisitanteGol, new { @class = "form-control" })<br />
+                                    <strong> @Html.DisplayFor(x => Model.QuinelaDetalleJugadas[i].PaisVisitanteGolResultado, new { @class = "form-control" })</strong><br />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <div class="row clearfix">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            @Html.ActionLink("Regresar", "Index")
+        </div>
+    </div>
+ 
+
+
+

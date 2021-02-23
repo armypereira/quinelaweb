@@ -1,0 +1,39 @@
+﻿@using Abp.Web.Mvc.Extensions
+@using System.Web.Optimization
+@model IEnumerable<QuinelaWeb.Web.Models.Quinelas.QuinelaViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+@section styles {
+    <link href="~/lib/morris.js/morris.css" rel="stylesheet" />
+}
+
+ <div class="container">
+     <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+             <h2><span class="fa fa-futbol-o"></span>Tus Quinelas</h2>
+         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+            @Html.ActionLink("Nueva ", "Create", null, new { @class = "btn btn-primary btn-lg fa fa-plus" })
+            @if (ViewData["Anfitrion"] != null) {
+               @Html.ActionLink("Invitar", "Invitar", null, new { @class = "btn btn-secondary btn-lg fa fa-send" })
+             }
+            </p>
+        </div>
+         </div>
+         <div class="row clearfix">
+             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                 <div class="card">
+                     <div class="header">
+                     </div>
+                     <div class="body">
+                         @Html.Partial("_Listado", Model)
+                     </div>
+                 </div>
+             </div>
+         </div>
+</div>
+
